@@ -7,7 +7,7 @@ import Addblog from '../components/editor/Addblog';
 
 
 const Home = () => {
-    
+
     const [posts, setPosts] = useState([]);
     const location = useLocation()
     console.log(location)
@@ -38,6 +38,7 @@ const Home = () => {
             {posts.map((post) => (
                 <CardBlogPost key={post.id} post={post} />
             ))}
+
         </div>
     );
 };

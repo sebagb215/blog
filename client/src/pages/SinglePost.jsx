@@ -16,7 +16,6 @@ const SinglePost = () => {
     const [post, setPost] = useState({})
     const [titulo, setTitulo] = useState("");
     const [descripcion, setDescripcion] = useState("");
-
     const descripcionSanitizada = DOMPurify.sanitize(post.descripcion)
 
 
@@ -26,7 +25,7 @@ const SinglePost = () => {
         axios
             .get(`http://localhost:8080/blogs/post/${id}`)
             .then((res) => {      //si la solicitud es exitosa, se ejecuta esta parte del codigo
-                console.log(res.data);//muestra en consola el primer elemento del array recibido
+                console.log(res.data);
                 if (res.data.length > 0) {//verifica si hay un elemento en el array de datos recibidos
                     setPost(res.data[0]) //establece el primer elemento del array como el estado 'post'
                 }
@@ -38,7 +37,6 @@ const SinglePost = () => {
     const editPost = () => {
         navigate(`/editar/post/${id}`)
     }
-
 
     return (
         <div className="bg-gray-100 font-sans">
@@ -61,9 +59,6 @@ const SinglePost = () => {
                     <div className='mb-8'>
                         <div dangerouslySetInnerHTML={{ __html: descripcionSanitizada }}></div>
                     </div>
-                    <article className=''>
-                        {/* CONTENIDO DE LA DESCRIPCION*/}
-                    </article>
                 </div>
             </div>
         </div>
