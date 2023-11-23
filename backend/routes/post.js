@@ -42,15 +42,15 @@ router.get("/blogs/post/:id", (req, res) => {
 
 //AÑADIR NUEVO POST
 router.post("/create", (req, res) => {
-    const { id, titulo, descripcion, img, fechaPublicacion } = req.body;
+    const {titulo, descripcion, img, fechaPublicacion } = req.body;
 
-    const q = "INSERT INTO post (id,titulo,descripcion,img,fechaPublicacion) VALUES (?, ?, ?, ?, ?)"
+    const q = "INSERT INTO post (titulo,descripcion,img,fechaPublicacion) VALUES (?, ?, ?, ?, ?)"
 
     const values = [
         req.body.id,
         req.body.titulo,
         req.body.descripcion,
-        req.body.date,
+        req.body.fechaPublicacion,
         req.body.img
     ]
 
@@ -85,7 +85,7 @@ router.delete("/delete/:id", (req, res) => {
 //ACTUALIZAR / MODIFICAR POST
 router.put("/update/:id", (req, res) => {
     const id = req.params.id
-    const { titulo, descripcion, date, img, fechaPublicacion } = req.body
+    const { titulo, descripcion, img, fechaPublicacion } = req.body
     const q = "UPDATE post SET titulo= ?, descripcion= ?  WHERE id=?";
 
     const values = [titulo, descripcion,id]
