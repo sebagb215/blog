@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import CardBlogPost from '../components/cards/CardBlogPost';
 import axios from 'axios';
-import { Link, useLocation } from 'react-router-dom';
-import Addblog from '../components/editor/Addblog';
+import { useLocation } from 'react-router-dom';
+
 
 
 
@@ -11,9 +11,6 @@ const Home = () => {
     const [posts, setPosts] = useState([]);
     const location = useLocation()
     console.log(location)
-
-
-
 
 
     //OBTENER TODOS LOS POST DE LA BASE DE DATOS
