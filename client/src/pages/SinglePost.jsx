@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Mountains from '../assets/Mountains.jpeg';
 import axios from 'axios';
-import { VscEdit } from "react-icons/vsc";
 import DOMPurify from 'dompurify'; //evitar ataques XSS
 import { TiEdit } from "react-icons/ti";
 
@@ -16,16 +15,15 @@ const SinglePost = () => {
     const [post, setPost] = useState({})
     const [titulo, setTitulo] = useState("");
     const [descripcion, setDescripcion] = useState("");
-    const descripcionSanitizada = DOMPurify.sanitize(post.descripcion)
-
-
+    const descripcionSanitizada = DOMPurify.sanitize(post.descripcion) 
+    
     const navigate = useNavigate();
 
     useEffect(() => {
         axios
             .get(`http://localhost:8080/blogs/post/${id}`)
             .then((res) => {      //si la solicitud es exitosa, se ejecuta esta parte del codigo
-                console.log(res.data);
+                console.log(res.data)
                 if (res.data.length > 0) {//verifica si hay un elemento en el array de datos recibidos
                     setPost(res.data[0]) //establece el primer elemento del array como el estado 'post'
                 }
